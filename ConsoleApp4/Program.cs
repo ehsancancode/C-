@@ -16,14 +16,17 @@ namespace FitnessApp
             double weight = double.Parse(Console.ReadLine());
             Console.WriteLine("Enter your height in centimeters: ");
             double height = double.Parse(Console.ReadLine());
+            
             //Though I asked for the height in cm's but BMI mathematical formula needs
             //meters so that why we need the conversion below before passing the
             //arguments to the CalculateBmi Function
+            
             double heightInMeters = height / 100;
+            
             // Calculate BMI
             double bmi = BmiCalculator.CalculateBmi(weight, heightInMeters);
             Console.WriteLine("Your BMI is: " + bmi);
-
+            
             // Ask for goal
             int goal = UserInput.Goal();
             // user's target weight
