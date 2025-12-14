@@ -2,9 +2,10 @@ namespace FitnessApp
 {
     public class BmiCalculator
     {
-        public static double CalculateBmi(double weight, double height)
+        public static double CalculateBmi(double weight, double heightInCm)
         {
-            return weight / (height * height);
+            double heightInMeters = heightInCm / 100;
+            return weight / (heightInMeters * heightInMeters);
         }
     }
 }

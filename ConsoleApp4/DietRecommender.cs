@@ -3,36 +3,48 @@ namespace FitnessApp
 {
     public class DietRecommender
     {
-        public static void RecommendDiet(int goal)
+        public static void RecommendDiet(int goal, double targetWeight)
         {
-            Console.WriteLine();
-            Console.WriteLine("Recommended Macros:");
-
-            List<string> macros = new List<string>();
-
+            double calories = 0;
+            double proteinPercent = 0;
+            double carbPercent = 0;
+            double fatPercent = 0;
+            // calories and macros ratio
             if (goal == 1)
             {
-                macros.Add("Protein: High");
-                macros.Add("Carbohydrates: Low");
-                macros.Add("Fats: Moderate");
+                calories = targetWeight * 22;
+                proteinPercent = 0.40;
+                carbPercent = 0.30;
+                fatPercent  = 0.30;
             }
+            
             else if (goal == 2)
             {
-                macros.Add("Protein: Moderate");
-                macros.Add("Carbohydrates: High");
-                macros.Add("Fats: Moderate");
+                calories = targetWeight * 35;
+                proteinPercent = 0.25;
+                carbPercent = 0.50;
+                fatPercent  = 0.25;
             }
             else if (goal == 3)
             {
-                macros.Add("Protein: High");
-                macros.Add("Carbohydrates: Moderate");
-                macros.Add("Fats: Low");
+                calories = targetWeight * 30;
+                proteinPercent = 0.30;
+                carbPercent = 0.40;
+                fatPercent  = 0.30;
             }
-
-            foreach (string macro in macros)
-            {
-                Console.WriteLine(macro);
-            }
+            // calories to gram conversion logic
+            double proteinGrams = (calories * proteinPercent) / 4;
+            double carbGrams = (calories * carbPercent) / 4;
+            double fatGrams = (calories * fatPercent) / 9;
+            
+            Console.WriteLine();
+            Console.WriteLine("Daily Target: ");
+            Console.WriteLine("Calories: " + calories + " kCal");
+            Console.WriteLine("Protein: " + proteinGrams + " grams");
+            Console.WriteLine("CARBS: " + carbGrams + " grams");
+            Console.WriteLine("Fats: " + fatGrams + " grams");
+            Console.WriteLine();
+            Console.WriteLine("Pro Tip: Divide your Macros over 5 to 6 meals a day!");
         }
     }
 }
